@@ -9,6 +9,17 @@ async function cargar() {
   lista.innerHTML = clientas.length
     ? clientas.map((c) => `<li>${c.nombre} ${c.apellido} - ${c.dni}</li>`).join('')
     : '<li>Todavía no hay clientas</li>';
+
+  document.getElementById('sel-clienta').innerHTML = clientas
+    .map((c) => `<option value="${c.id}">${c.apellido}, ${c.nombre}</option>`)
+    .join('');
+}
+
+async function cargarEmpresas() {
+  const empresas = await window.api.listarEmpresas();
+  document.getElementById('sel-empresa').innerHTML = empresas
+    .map((e) => `<option>${e}</option>`)
+    .join('');
 }
 
 form.onsubmit = async (e) => {
@@ -32,4 +43,21 @@ form.onsubmit = async (e) => {
   }
 };
 
+document.getElementById('btn-etiqueta').onclick = async () => {
+  const msg = document.getElementById('msg-etiqueta');
+  const id = document.getElementById('sel-clienta').value;
+  const empresa = document.getElementById('sel-empresa').value;
+  if (!id) {
+    msg.textContent = 'Primero cargá una clienta';
+    return;
+  }
+  try {
+    const ruta = await window.api.generarEtiqueta(Number(id), empresa);
+    msg.textContent = ruta ? `Etiqueta guardada en: ${ruta}` : 'Cancelado';
+  } catch (err) {
+    msg.textContent = 'Error: ' + err.message;
+  }
+};
+
 cargar();
+cargarEmpresas();

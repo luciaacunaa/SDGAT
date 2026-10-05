@@ -28,4 +28,5 @@ module.exports = {
       VALUES (@nombre, @apellido, @dni, @telefono, @calle, @numero, @piso, @localidad, @provincia, @codigoPostal)
     `).run(c),
   listar: () => db.prepare('SELECT * FROM clientas ORDER BY apellido').all(),
+  obtener: (id) => db.prepare('SELECT * FROM clientas WHERE id = ?').get(id),
 };
