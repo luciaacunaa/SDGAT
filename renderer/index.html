@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Amate Indumentaria</title>
+</head>
+<body>
+  <h1>Mis clientas</h1>
+  <button id="btn-nueva">Nueva clienta</button>
+
+  <form id="form" hidden>
+    <input name="nombre" placeholder="Nombre">
+    <input name="apellido" placeholder="Apellido">
+    <input name="dni" placeholder="DNI">
+    <input name="telefono" placeholder="Teléfono">
+    <input name="calle" placeholder="Calle">
+    <input name="numero" placeholder="Número">
+    <input name="piso" placeholder="Piso (opcional)">
+    <input name="localidad" placeholder="Localidad">
+    <input name="provincia" placeholder="Provincia">
+    <input name="codigoPostal" placeholder="Código postal">
+    <p id="error" style="color:red"></p>
+    <button type="submit">Guardar</button>
+  </form>
+
+  <ul id="lista"></ul>
+  <script src="renderer.js"></script>
+</body>
+</html>

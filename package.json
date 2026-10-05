@@ -1,0 +1,12 @@
+{
+  "name": "amate-indumentaria",
+  "version": "1.0.0",
+  "description": "App de escritorio para cargar clientas y generar etiquetas de envío",
+  "main": "main.js",
+  "scripts": {
+    "postinstall": "electron-rebuild",
+    "start": "electron .",
+    "test": "playwright test"
+  },
+  "license": "ISC"
+}
